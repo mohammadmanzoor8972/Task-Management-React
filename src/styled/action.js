@@ -15,3 +15,9 @@ export const AddButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+
+export const AddCardButton = styled.button`
+  margin: 10px;
+  cursor: pointer;
+`;
