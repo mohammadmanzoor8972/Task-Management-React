@@ -33,7 +33,7 @@ export default function App() {
               }
             }}
           >
-            + Add another Tasks
+            + Add another Task(s)
           </AddButton>
         </TaskContainer>
       </Container>
