@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { primaryColor, primaryColorLight } from '../../styled/theme';
-import { Delete, AddCardButton } from '../../styled/action';
+import { Delete, AddCardButton, Text } from '../../styled/action';
 import { TasksItems } from '../TaskItem';
+import { GUID } from '../../helper';
 
 
 const TaskListStyled = styled.div`
@@ -23,6 +24,7 @@ const Title = styled.div`
 
 export const Tasks = ({ title }) => {
     const [task, setTask] = React.useState(() => []);
+    const confirm = window.confirm;
   
     const removeCardHandler = (item, index) => {
       const cnf = confirm("Do you want to remove card ?");
@@ -63,28 +65,28 @@ export const Tasks = ({ title }) => {
           <Title>
             <Text>{title}</Text>{" "}
             <Delete
-              onClick={() => {
-                removeTaskHandler();
+              onClick={(ev) => {
+                removeTaskHandler(ev);
               }}
             >
               x
             </Delete>
           </Title>
           <div
-            onDrop={() => {
-              drop(event);
+            onDrop={(ev) => {
+              drop(ev);
             }}
-            onDragOver={() => {
-              allowDrop(event);
+            onDragOver={(ev) => {
+              allowDrop(ev);
             }}
           >
             {task &&
               task.map((item, index) => (
                 <TasksItems
+                  key={GUID()}
                   draggable
                   task={item}
                   index={index}
-                  key={item}
                   removeCardHandler={removeCardHandler}
                 />
               ))}

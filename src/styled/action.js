@@ -21,3 +21,5 @@ export const AddCardButton = styled.button`
   margin: 10px;
   cursor: pointer;
 `;
+
+export const Text = styled.div``;
