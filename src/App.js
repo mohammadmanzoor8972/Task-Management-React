@@ -18,6 +18,12 @@ export default function App() {
   const [task, setTask] = React.useState([]);
   const prompt = window.prompt;
 
+  const addTaskHandler=()=>{
+    const p = prompt("Enter Title");
+    if (p) {
+      setTask([...task, p]);
+    }
+  }
   return (
     <>
       <Root />
@@ -25,14 +31,7 @@ export default function App() {
         <ApplicationTitle>Tavisca Task Management</ApplicationTitle>
         <TaskContainer>
           {task && task.map(item => <Tasks title={item} key={GUID()}/>)}
-          <AddButton
-            onClick={() => {
-              const p = prompt("Enter Title");
-              if (p) {
-                setTask([...task, p]);
-              }
-            }}
-          >
+          <AddButton onClick={addTaskHandler}>
             + Add another Tasks
           </AddButton>
         </TaskContainer>
